@@ -5,8 +5,11 @@
  */
 package br.crazy.chain.util;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 /**
  *
@@ -20,10 +23,33 @@ public class Util {
     }
 
     private static boolean checkItemStack(ItemStack[] array) {
-        for (ItemStack is : array)
-            if (is == null) 
+        for (ItemStack is : array) {
+            if (is == null) {
                 return true;
+            }
+        }
         return false;
+    }
+
+    public static void pasteinventory(Player p) {
+        clearinventory(p);
+        PlayerInventory i = p.getInventory();
+        i.setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));
+        i.setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
+        i.setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
+        i.setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
+        i.addItem(new ItemStack(Material.IRON_SWORD));
+        i.addItem(new ItemStack(Material.BOW));
+        i.addItem(new ItemStack(Material.ARROW, 20));
+    }
+
+    public static void clearinventory(Player p) {
+        PlayerInventory i = p.getInventory();
+        i.clear();
+        i.setHelmet(new ItemStack(Material.AIR));
+        i.setChestplate(new ItemStack(Material.AIR));
+        i.setLeggings(new ItemStack(Material.AIR));
+        i.setBoots(new ItemStack(Material.AIR));
     }
 
 }

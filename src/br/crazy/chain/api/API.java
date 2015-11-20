@@ -7,6 +7,7 @@ package br.crazy.chain.api;
 
 import br.crazy.chain.Chain;
 import br.crazy.chain.playerdata.PlayerData;
+import br.crazy.chain.util.Util;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,9 +33,32 @@ public class API {
         this.load();
     }
     
-    public void join(Player p){}
+    public PlayerData get(Player p){
+        for(PlayerData pd : data){
+            if(p.getName().equals(pd.getName()))
+                return pd;
+        }
+        return null;
+    }
     
-    public void quit(Player p){}
+    public boolean has(Player p){
+        return get(p) != null;
+    }
+    
+    public void join(Player p){
+        if(!has(p)){
+            PlayerData pd = new PlayerData(p.getName());
+            insert(pd);
+        }
+        Util.pasteinventory(p);
+        
+    }
+    
+    public void quit(Player p){
+        Util.clearinventory(p);
+        if(has(p))
+            update(get(p));
+    }
     
     public void insert(PlayerData pd){
         if(main.getMySQL().enable())
