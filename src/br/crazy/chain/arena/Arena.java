@@ -79,7 +79,7 @@ public class Arena {
         return this.limit;
     }
 
-    public int getPlayerSize() {
+    public int getPlayersSize() {
         return this.players.size();
     }
     
