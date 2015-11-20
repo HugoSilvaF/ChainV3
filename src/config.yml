@@ -1,0 +1,17 @@
+MySQL:
+    enable: false
+    host: 'localhost'
+    port: '3306'
+    database: 'MyServer'
+    username: 'root'
+    password: 'root'
+limit:
+    enable: false
+    limit: 25
+options:
+    health_per_bowl: 4
+    points_per_kill: 3
+    points_per_death: 5
+spawns:
+    - world 10 10 10
+    - world 15 15 15
