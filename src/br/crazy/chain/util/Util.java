@@ -5,9 +5,10 @@
  */
 package br.crazy.chain.util;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -16,6 +17,14 @@ import org.bukkit.inventory.PlayerInventory;
  * @author Hugo
  */
 public class Util {
+
+    public static Location toLocation(String s) {
+        if (s.contains(" ")) {
+            String[] a = s.split(" ");
+            return new Location(Bukkit.getWorld(a[0]), Integer.parseInt(a[1]), Integer.parseInt(a[2]), Integer.parseInt(a[3]));
+        }
+        return null;
+    }
 
     public static boolean checkInventory(Player p) {
         return checkItemStack(p.getInventory().getArmorContents())

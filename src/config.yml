@@ -9,6 +9,7 @@ limit:
     enable: false
     limit: 25
 options:
+    name: 'Arena Chain'
     health_per_bowl: 4
     points_per_kill: 3
     points_per_death: 5

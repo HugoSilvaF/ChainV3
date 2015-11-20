@@ -6,6 +6,7 @@
 package br.crazy.chain.api;
 
 import br.crazy.chain.Chain;
+import br.crazy.chain.arena.Arena;
 import br.crazy.chain.playerdata.PlayerData;
 import br.crazy.chain.util.Util;
 import java.sql.PreparedStatement;
@@ -24,11 +25,13 @@ import org.bukkit.entity.Player;
 public class API {
     
     private final Chain main;
+    private final Arena arena;
     
     private List<PlayerData> data;
     
-    public API(Chain m){
+    public API(Chain m, Arena arena){
         this.main = m;
+        this.arena = arena;
         this.data = new ArrayList<>();
         this.load();
     }
